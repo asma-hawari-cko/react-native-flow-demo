@@ -24,6 +24,8 @@ allprojects {
         google()
         mavenCentral() // Ensure this is included
         maven { url 'https://jitpack.io' } // Add if required
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://maven.fpregistry.io/releases") }
     }
 }
 

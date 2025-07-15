@@ -13,6 +13,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral() // Ensure this is included
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://maven.fpregistry.io/releases") }
     }
 }
 rootProject.name = 'DemoFlowApp'

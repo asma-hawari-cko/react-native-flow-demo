@@ -23,6 +23,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import androidx.activity.ComponentActivity
+import com.checkout.components.interfaces.uicustomisation.font.FontName
+import com.checkout.components.interfaces.uicustomisation.BorderRadius
+import com.checkout.components.interfaces.uicustomisation.designtoken.ColorTokens
+import com.checkout.components.interfaces.uicustomisation.font.*
+import com.checkout.components.interfaces.uicustomisation.designtoken.DesignTokens
 
 class FlowModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
@@ -109,6 +114,56 @@ class FlowModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaMo
             }
         )
 
+        val designTokens = DesignTokens(
+            colorTokens = ColorTokens(
+                colorAction = 0xFF00CC2D,
+                colorBackground = 0xFF17201E,
+                colorBorder = 0xFF00CC2D,
+                colorDisabled = 0xFFBBFFB9,
+                colorPrimary = 0xFFB1B1B1,
+                colorFormBackground = 0xFF24302D,
+                colorFormBorder = 0xFFB1B1B1,
+                colorInverse = 0xFFFFFFFF,
+                colorOutline = 0xFFB1B1B1,
+                colorSecondary = 0xFF000000,
+                colorSuccess = 0xFF00CC2D,
+                colorError = 0xFFFF0000,
+                colorScrolledContainer = 0xFFE8E6E6
+            ),
+            borderButtonRadius = BorderRadius(all = 20),
+            borderFormRadius = BorderRadius(all = 20),
+            fonts = mapOf(
+                FontName.Subheading to Font(
+                    fontStyle = FontStyle.Italic,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = FontFamily.Monospace,
+                    letterSpacing = 2,
+                    lineHeight = 2
+                ),
+                FontName.Input to Font(
+                    fontStyle = FontStyle.Italic,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = FontFamily.Monospace,
+                    letterSpacing = 2,
+                    lineHeight = 2
+                ),
+                FontName.Button to Font(
+                    fontStyle = FontStyle.Italic,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontFamily = FontFamily.SansSerif,
+                    letterSpacing = 2,
+                    lineHeight = 2
+                ),
+                FontName.Label to Font(
+                    fontStyle = FontStyle.Normal,
+                    fontWeight = FontWeight.Light,
+                    fontFamily = FontFamily.Cursive,
+                    letterSpacing = 2,
+                    lineHeight = 2
+                )
+            )
+        )
+
         val configuration = CheckoutComponentConfiguration(
             context = activity,
             paymentSession = PaymentSessionResponse(
@@ -119,6 +174,7 @@ class FlowModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaMo
             componentCallback = customComponentCallback,
             publicKey = BuildConfig.FLOW_API_KEY,
             environment = Environment.SANDBOX,
+            appearance = designTokens,
             flowCoordinators = mapOf(PaymentMethodName.GooglePay to googlePayCoordinator!!)
         )
 
@@ -127,6 +183,16 @@ class FlowModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaMo
                 checkoutComponents = CheckoutComponentsFactory(config = configuration).create()
                 val flowComponent = checkoutComponents.create(ComponentName.Flow)
                 //val googlePayComponent = checkoutComponents.create(PaymentMethodName.GooglePay)
+                // Log.d("FlowModule", "Created GooglePay component: $googlePayComponent")
+                //googlePayComponent.Render()
+
+                /*val googlePayComponent = checkoutComponents.create(PaymentMethodName.GooglePay)
+
+                Log.d("FlowModule", if (googlePayComponent.isAvailable())
+                    ":white_check_mark: Google Pay component is available"
+                else
+                    ":x: Google Pay component is NOT available"
+                )*/
 
                 withContext(Dispatchers.Main) {
                     containerView?.let {

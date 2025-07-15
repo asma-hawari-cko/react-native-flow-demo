@@ -112,7 +112,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-    implementation("com.checkout:checkout-android-components:1.0.0-beta-1")
+    implementation("com.checkout:checkout-android-components:1.0.0")
     // implementation "com.checkout:checkout-android-components:1.0.0-beta-1"
 
     if (hermesEnabled.toBoolean()) {

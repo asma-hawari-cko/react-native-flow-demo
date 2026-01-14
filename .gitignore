@@ -1,2 +1,84 @@
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Node / JS
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Expo (if used)
+# =========================
+.expo/
+.expo-shared/
+web-build/
+
+# =========================
+# React Native
+# =========================
+.metro-health-check*
+
+# =========================
+# Android
+# =========================
+android/.gradle/
+android/.idea/
+android/local.properties
+android/.cxx/
 android/app/build/
+android/build/
 *.apk
+*.aab
+*.iml
+
+# =========================
+# iOS
+# =========================
+ios/Pods/
+ios/build/
+ios/*.xcworkspace
+ios/.xcuserdata
+ios/*.xcuserstate
+ios/DerivedData/
+ios/.idea/
+
+# =========================
+# Fastlane
+# =========================
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+temp/
